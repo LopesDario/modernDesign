@@ -19,7 +19,11 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }*/
 
-/*@import url('https://fonts.googleapis.com/css?family=Montserrat:300,700&display=swap');*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,700&display=swap");
+
+$primary-color: #ffcc00;
+$submit-btn-bg-color: black;
+$submit-btn-color: white;
 
 body,
 html {
@@ -27,7 +31,7 @@ html {
 }
 
 body {
-  height: 100%;
+  height: 100vh;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -54,5 +58,142 @@ header {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    li a {
+      padding: 1em 0em 1em 1em;
+    }
+
+    li:last-child a {
+      padding-right: 0.5em;
+    }
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto;
+  height: 100%;
+
+  section {
+    padding: 3em;
+
+    h1,
+    h2,
+    .btn-read {
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 1.4em;
+    }
+
+    .btn-read {
+      background: url(../assets/caret-right-solid.svg) no-repeat;
+      background-size: 8px;
+      background-position: 0 -1px;
+      color: black;
+      font-weight: bold;
+      padding-left: 1.2em;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-position: 3em;
+      border: 1px solid gray;
+      display: inline-block;
+      margin-left: calc(-3em - 1px);
+      margin-top: 3em;
+      padding: 1.5em 1.5em 1.5em calc(3em + 25px);
+    }
+  }
+
+  section.hero {
+    background: url(../assets/hero.jpg) center;
+    background-size: cover;
+    padding-top: 8em;
+
+    p {
+      width: 80%;
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+    }
+  }
+
+  section.featured,
+  section.subscribe {
+    font-size: 0.9rem;
+    line-height: 1.6em;
+  }
+
+  section.featured {
+    background: $primary-color;
+
+    .btn-read {
+      background-position: 0 0.1em;
+      display: block;
+      margin-top: 2em;
+    }
+  }
+
+  section.subscribe {
+    input {
+      font-family: "Montserrat", sans-serif;
+      margin-bottom: 1em;
+      padding: 1em;
+      width: calc(100% - 2em);
+    }
+
+    button {
+      background: $submit-btn-bg-color;
+      border: none;
+      color: $submit-btn-color;
+      font-family: "Montserrat", sans-serif;
+      padding: 1em;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  header {
+    background: none;
+  }
+
+  .container {
+    grid-template-columns: 70% auto;
+    grid-template-rows: 60% auto;
+    grid-template-areas:
+      "hero featured"
+      "hero subscribe";
+  }
+
+  section.hero {
+    grid-area: hero;
+  }
+
+  section {
+    display: grid;
+    align-items: center;
+    grid-template-rows: auto;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  html {
+    font-size: 21px;
   }
 }
